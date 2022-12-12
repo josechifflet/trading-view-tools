@@ -40,6 +40,8 @@ const get_coins_futures = (symbols: any) => {
   const coins_usdt: unknown[] = [];
   const coins_usdt_oi: unknown[] = [];
 
+  const coins_busd: unknown[] = [];
+  const coins_busd_oi: unknown[] = [];
   symbols.forEach((symbol: any) => {
     if (symbol.quoteAsset === "USDT") {
       coins_usdt.push(
@@ -49,10 +51,22 @@ const get_coins_futures = (symbols: any) => {
         `binance:${symbol.baseAsset}${symbol.quoteAsset}perp_oi`.toLowerCase()
       );
     }
+    if (symbol.quoteAsset === "BUSD") {
+      coins_busd.push(
+        `binance:${symbol.baseAsset}${symbol.quoteAsset}perp`.toLowerCase()
+      );
+      coins_busd_oi.push(
+        `binance:${symbol.baseAsset}${symbol.quoteAsset}perp_oi`.toLowerCase()
+      );
+    }
   });
 
   const uniqUsdtFutures = _.uniq(coins_usdt).join("\n");
   const uniqUsdtOiFutures = _.uniq(coins_usdt_oi).join("\n");
+  const uniqBusdFutures = _.uniq(coins_usdt).join("\n");
+  const uniqBusdOiFutures = _.uniq(coins_usdt_oi).join("\n");
+  fs.writeFileSync("uniqBusdFutures.txt", uniqBusdFutures);
+  fs.writeFileSync("uniqBusdOiFutures.txt", uniqBusdOiFutures);
   fs.writeFileSync("uniqUsdtFutures.txt", uniqUsdtFutures);
   fs.writeFileSync("uniqUsdtOiFutures.txt", uniqUsdtOiFutures);
 };
