@@ -63,8 +63,8 @@ const get_coins_futures = (symbols: any) => {
 
   const uniqUsdtFutures = _.uniq(coins_usdt).join("\n");
   const uniqUsdtOiFutures = _.uniq(coins_usdt_oi).join("\n");
-  const uniqBusdFutures = _.uniq(coins_usdt).join("\n");
-  const uniqBusdOiFutures = _.uniq(coins_usdt_oi).join("\n");
+  const uniqBusdFutures = _.uniq(coins_busd).join("\n");
+  const uniqBusdOiFutures = _.uniq(coins_busd_oi).join("\n");
   fs.writeFileSync("uniqBusdFutures.txt", uniqBusdFutures);
   fs.writeFileSync("uniqBusdOiFutures.txt", uniqBusdOiFutures);
   fs.writeFileSync("uniqUsdtFutures.txt", uniqUsdtFutures);
